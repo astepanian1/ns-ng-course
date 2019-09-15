@@ -1,0 +1,4 @@
+﻿dotnet ef migrations remove
+
+
+

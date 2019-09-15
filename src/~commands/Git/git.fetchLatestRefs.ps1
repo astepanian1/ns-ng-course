@@ -1,1 +1,1 @@
-git fetch --prune origin
+git fetch -p
