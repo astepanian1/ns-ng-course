@@ -1,6 +1,6 @@
 
-#CTRL+G Start CodeRunner CTRL+ALT+G Stop CodeRunner
-function Start-Emulator { 
+#CTRL+G Start CodeRunner and CTRL+ALT+G Stop CodeRunner (VS Code Bound Shortcuts)
+function Start-Emulator {
 
 $CMD = 'C:\Android\android-sdk\emulator\emulator.exe'
 $arg1 = '-avd'
