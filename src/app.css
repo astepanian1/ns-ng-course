@@ -10,3 +10,24 @@ of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
 @import '~nativescript-theme-core/css/core.light.css';
+
+
+.btn{
+ background:purple;
+ border-color:purple;
+ border-width: 1;
+ color:white;
+ width:250;
+ padding:5 10;
+ border-radius: 30%;
+ margin:5 0;
+}
+
+.form-control{
+    border-bottom-color: purple;
+    border-bottom-width:2;
+    margin:5 0;
+    font-size: 20;
+    padding:8 0;
+
+}

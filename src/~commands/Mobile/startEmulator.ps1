@@ -8,4 +8,5 @@ $arg2 ='Pixel_3_XL_API_29'
     & $CMD $arg1 $arg2
 }
 
-&Start-Emulator
+& Start-Emulator
+
