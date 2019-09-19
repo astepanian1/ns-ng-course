@@ -1,0 +1,23 @@
+<!-- Rows
+auto - takes full height of largest row item
+* - takes remainder of available height
+2* - takes 2x of remainder of available height
+
+Columns
+auto - takes full height of largest row item
+* - takes remainder of available height
+2* - takes 2x of remainder of available height 
+[colSpan property span your Item across multiple columns]
+[rowSpan property span your Item across multiple columns]
+
+-->
+<GridLayout rows="auto,*,70,2*" columns="*,auto,100">
+    <Label id="i1" text="Item1" row="0" col="0" colSpan="3"></Label>
+    <Label id="i2" text="Item2" row="2" col="1"  rowSpan="2"></Label>
+    <Label id="i3" text="Item3" row="3" col="2" ></Label>
+</GridLayout>
+
+
+
+
+

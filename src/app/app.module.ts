@@ -8,6 +8,10 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 import { StackComponent } from './layouts/stack/stack.component';
 import { FlexboxComponent } from './layouts/flexbox/flexbox.component';
+import { GridComponent } from './layouts/grid/grid.component';
+import { GridAssignmentComponent } from './assignments/grid-assignment/grid-assignment.component';
+import { AbsoluteComponent } from './layouts/absolute/absolute.component';
+import { ChallengeEditComponent } from './challanges/challenge-edit/challenge-edit.component';
 
 
 
@@ -23,7 +27,11 @@ import { FlexboxComponent } from './layouts/flexbox/flexbox.component';
         AppComponent,
         CurrentChallengeComponent,
         StackComponent,
-        FlexboxComponent
+        FlexboxComponent,
+        GridComponent,
+        GridAssignmentComponent,
+        AbsoluteComponent,
+        ChallengeEditComponent
     ],
     providers: [],
     schemas: [

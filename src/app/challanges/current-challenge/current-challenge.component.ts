@@ -7,11 +7,6 @@ import { Component } from "@angular/core";
     moduleId:module.id
 })
 export class CurrentChallengeComponent{
-    challengeDescription:string = '';
     currentChallenge:string ='';
 
-
-    onSetChallenge(){
-        this.currentChallenge = this.challengeDescription;
-    }
 }
