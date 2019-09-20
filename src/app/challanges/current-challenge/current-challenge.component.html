@@ -1,5 +1,5 @@
 <StackLayout>
-<Label [text]="currentChallenge" class="title" horizontalAlignment="center"></Label>
+<Label *ngFor="let challenge of challenges" [text]="challenge" class="title" horizontalAlignment="center"></Label>
 </StackLayout>
 
 

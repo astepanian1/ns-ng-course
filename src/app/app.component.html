@@ -1,10 +1,10 @@
 <!-- https://docs.nativescript.org/angular/core-concepts/angular-navigation.html#page-router-outlet -->
 <!-- <page-router-outlet></page-router-outlet> -->
 
-Regardless of Layout used in component app.component is required to include layout tag  to work properly:
+<!-- Regardless of Layout used in component app.component is required to include layout tag  to work properly: -->
 <StackLayout>
-<ns-challenge-edit></ns-challenge-edit>
-<ns-current-challenge></ns-current-challenge>
+<ns-challenge-edit (challengeChanged)="onChallengeInput($event)"></ns-challenge-edit>
+<ns-current-challenge [challenges]="activeChallenges"></ns-current-challenge>
 </StackLayout>
 <!-- <StackLayout> -->
 <!-- <ns-stack></ns-stack> -->
