@@ -2,10 +2,10 @@
 <!-- <page-router-outlet></page-router-outlet> -->
 
 <!-- Regardless of Layout used in component app.component is required to include layout tag  to work properly: -->
-<StackLayout>
+<FlexboxLayout flexDirection="column">
 <ns-challenge-edit (challengeChanged)="onChallengeInput($event)"></ns-challenge-edit>
 <ns-current-challenge [challenges]="activeChallenges"></ns-current-challenge>
-</StackLayout>
+</FlexboxLayout>
 <!-- <StackLayout> -->
 <!-- <ns-stack></ns-stack> -->
 <!-- <ns-flexbox></ns-flexbox> -->
