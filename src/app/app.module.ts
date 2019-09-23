@@ -12,6 +12,8 @@ import { GridComponent } from './layouts/grid/grid.component';
 import { GridAssignmentComponent } from './assignments/grid-assignment/grid-assignment.component';
 import { AbsoluteComponent } from './layouts/absolute/absolute.component';
 import { ChallengeEditComponent } from './challanges/challenge-edit/challenge-edit.component';
+import { AuthComponent } from './auth/auth.component';
+import { TodayComponent } from './challenges/today/today.component';
 
 
 
@@ -31,7 +33,9 @@ import { ChallengeEditComponent } from './challanges/challenge-edit/challenge-ed
         GridComponent,
         GridAssignmentComponent,
         AbsoluteComponent,
-        ChallengeEditComponent
+        ChallengeEditComponent,
+        AuthComponent,
+        TodayComponent
     ],
     providers: [],
     schemas: [
