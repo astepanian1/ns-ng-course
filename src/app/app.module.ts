@@ -1,19 +1,16 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { AppComponent } from "./app.component";
-import { CurrentChallengeComponent } from "./challanges/current-challenge/current-challenge.component";
+import { CurrentChallengeComponent } from "./challenges/current-challenge/current-challenge.component";
 // Uncomment and add to NgModule imports if you need to use two-way binding
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
-import { StackComponent } from './layouts/stack/stack.component';
-import { FlexboxComponent } from './layouts/flexbox/flexbox.component';
-import { GridComponent } from './layouts/grid/grid.component';
-import { GridAssignmentComponent } from './assignments/grid-assignment/grid-assignment.component';
-import { AbsoluteComponent } from './layouts/absolute/absolute.component';
-import { ChallengeEditComponent } from './challanges/challenge-edit/challenge-edit.component';
+import { ChallengeEditComponent } from './challenges/challenge-edit/challenge-edit.component';
 import { AuthComponent } from './auth/auth.component';
 import { TodayComponent } from './challenges/today/today.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { ActionBarComponent } from './shared/ui/action-bar/action-bar.component';
 
 
 
@@ -23,19 +20,16 @@ import { TodayComponent } from './challenges/today/today.component';
     ],
     imports: [
         NativeScriptModule,
-        NativeScriptFormsModule
+        NativeScriptFormsModule,
+        AppRoutingModule
     ],
     declarations: [
         AppComponent,
         CurrentChallengeComponent,
-        StackComponent,
-        FlexboxComponent,
-        GridComponent,
-        GridAssignmentComponent,
-        AbsoluteComponent,
         ChallengeEditComponent,
         AuthComponent,
-        TodayComponent
+        TodayComponent,
+        ActionBarComponent
     ],
     providers: [],
     schemas: [
