@@ -9,25 +9,30 @@ In many cases you may want to use the NativeScript core theme instead
 of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
-@import '~nativescript-theme-core/css/core.light.css';
+@import "~nativescript-theme-core/css/core.light.css";
 
-
-.btn{
- background:purple;
- border-color:purple;
- border-width: 1;
- color:white;
- width:100%;
- padding:5 10;
- border-radius: 30%;
- margin:5 0;
+.btn {
+  background: purple;
+  border-color: purple;
+  border-width: 1;
+  color: white;
+  width: 100%;
+  padding: 5 10;
+  border-radius: 30%;
+  margin: 5 0;
 }
 
-.form-control{
-    border-bottom-color: purple;
-    border-bottom-width:2;
-    margin:5 0;
-    font-size: 20;
-    padding:8 0;
+.form-control {
+  border-bottom-color: purple;
+  border-bottom-width: 2;
+  margin: 5 0;
+  font-size: 20;
+  padding: 8 0;
+}
 
+.drawer-container {
+  background: linear-gradient(140deg,#2b0c72, #5c3fa0);
+  flex-direction:column;
+  justify-content:center;
+  padding:20;
 }

@@ -12,7 +12,7 @@ import { TodayComponent } from './challenges/today/today.component';
 import { AppRoutingModule } from "./app-routing.module";
 import { ActionBarComponent } from './shared/ui/action-bar/action-bar.component';
 import { ChallengeTabsComponent } from './challenges/challenge-tabs/challenge-tabs.component';
-
+import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular/side-drawer-directives';
 
 
 @NgModule({
@@ -20,6 +20,7 @@ import { ChallengeTabsComponent } from './challenges/challenge-tabs/challenge-ta
         AppComponent
     ],
     imports: [
+        NativeScriptUISideDrawerModule,
         NativeScriptModule,
         NativeScriptFormsModule,
         AppRoutingModule
