@@ -1,5 +1,14 @@
-<ns-action-bar title="Current Challenge"></ns-action-bar>
+<!-- All Html between ns-action-bar will appear between ActionBar component's <ng-content></ng-content> tags -->
+<ns-action-bar title="Current Challenge" [showBackButton]="false">
+    <ActionItem nsRouterLink="/challenges/replace" ios.position="right" android.position="actionBar" pageTransition="slideRight"><Label text="Replace"></Label></ActionItem>
+    <ActionItem nsRouterLink="/challenges/edit" ios.position="right" android.position="actionBar" pageTransition="slideRight"><Label text="Edit"></Label></ActionItem>
+</ns-action-bar>
 <StackLayout>
     <Label text="The current Challenge" horizontalAlignment="center" class="title"></Label>
-    <Button text="Edit" (tap)="onEdit()"></Button>
+<Button (tap)="onChangeStatus()" text="Change Status"></Button>
 </StackLayout>
+
+
+
+
+                    

@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
-import { RouterExtensions } from "nativescript-angular/router";
+import { Component, ViewContainerRef } from "@angular/core";
+import { ModalDialogService } from 'nativescript-angular/modal-dialog';
+import { DayModalComponent } from "../day-modal/day-modal.component";
 
 declare var android:any;
 
@@ -11,14 +12,20 @@ declare var android:any;
 })
 export class CurrentChallengeComponent {
 
-    constructor(private router:RouterExtensions) {
+    constructor(private modalDialog:ModalDialogService, private vcRef:ViewContainerRef) {
         
         
+    }
+    
+    //Edit value is passed to parameter :mode
+    onChangeStatus(){
+        this.modalDialog.showModal(DayModalComponent,{fullscreen:true,viewContainerRef:this.vcRef});
     }
 
-    onEdit(){
-        this.router.navigate(['/edit-challenge'],{transition:{name:'slideLeft'}})
-    }
+
 }
+
+
+
 
 

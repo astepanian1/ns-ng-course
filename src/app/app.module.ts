@@ -13,6 +13,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { ActionBarComponent } from './shared/ui/action-bar/action-bar.component';
 import { ChallengeTabsComponent } from './challenges/challenge-tabs/challenge-tabs.component';
 import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular/side-drawer-directives';
+import { DayModalComponent } from './challenges/day-modal/day-modal.component';
 
 
 @NgModule({
@@ -32,12 +33,14 @@ import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angul
         AuthComponent,
         TodayComponent,
         ActionBarComponent,
-        ChallengeTabsComponent
+        ChallengeTabsComponent,
+        DayModalComponent
     ],
     providers: [],
     schemas: [
         NO_ERRORS_SCHEMA
-    ]
+    ],
+    entryComponents:[DayModalComponent]
 })
 /*
 Pass your application module to the bootstrapModule function located in main.ts to start your app
