@@ -12,18 +12,7 @@ const routes: Routes = [
 
     {
         path: 'challenges',
-
-        children: [
-            {
-                path: 'tabs', component: ChallengeTabsComponent, children: [
-                    { path: 'today', component: TodayComponent, outlet: 'today' },
-                    { path: 'current-challenge', component: CurrentChallengeComponent, outlet: 'currentChallenge' },
-                ]
-            },
-            { path: ':mode', component: ChallengeEditComponent },
-            { path: '', redirectTo:"/challenges/tabs",pathMatch:'full' }
-
-        ]
+        loadChildren: () => import('~/app/challenges/challenges.module').then(m => m.ChallengesModule)
     }
 
 ];
