@@ -11,17 +11,6 @@ refer to http://docs.nativescript.org/ui/theme.
 */
 @import "~nativescript-theme-core/css/core.light.css";
 
-.btn {
-  background: purple;
-  border-color: purple;
-  border-width: 1;
-  color: white;
-  width: 100%;
-  padding: 5 10;
-  border-radius: 30%;
-  margin: 5 0;
-}
-
 .form-control {
   border-bottom-color: purple;
   border-bottom-width: 2;
@@ -35,4 +24,13 @@ refer to http://docs.nativescript.org/ui/theme.
   flex-direction:column;
   justify-content:center;
   padding:20;
+}
+
+.btn{
+      
+  border-width: 1;
+  width: 100%;
+  padding: 5 10;
+  border-radius: 30%;
+  margin: 5 0;
 }

@@ -1,0 +1,7 @@
+@import "./app.css";
+
+.btn {
+    background: green;
+    border-color: green;
+    color: white;
+  }
