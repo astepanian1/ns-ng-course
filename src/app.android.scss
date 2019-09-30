@@ -1,0 +1,11 @@
+// Import the theme’s main ruleset - both index and platform specific.
+@import "app.common";
+@import 'app.variables';
+@import '~nativescript-theme-core/scss/platforms/index.android';
+
+
+// .btn {
+//     background: purple;
+//     border-color: purple;
+//     color: white;
+//   }

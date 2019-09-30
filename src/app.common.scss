@@ -1,0 +1,69 @@
+/*
+In NativeScript, the app.css file is where you place CSS rules that
+you would like to apply to your entire application. Check out
+http://docs.nativescript.org/ui/styling for a full list of the CSS
+selectors and properties you can use to style UI components.
+
+/*
+In many cases you may want to use the NativeScript core theme instead
+of writing your own CSS rules. For a full list of class names in the theme
+refer to http://docs.nativescript.org/ui/theme...
+*/
+@import "~nativescript-theme-core/scss/light";
+@import "app.variables";
+@import "./theme/colors";
+@import '~nativescript-theme-core/scss/index';
+
+ActionBar {
+  background: $primary;
+  color: white;
+}
+
+.form {
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  .input-field {
+    width: 80%;
+
+    .label {
+      color: $primary;
+      font-weight: bold;
+      font-family: 'Oswald', 'Oswald-Regular', 'Oswald-Bold';
+    }
+
+    .input {
+      border-bottom-width: 2;
+      border-bottom-color: $primary;
+      width: 100%;
+      color: black;
+    }
+  }
+}
+
+// .form-control {
+//   border-bottom-color: purple;
+//   border-bottom-width: 2;
+//   margin: 5 0;
+//   font-size: 20;
+//   padding: 8 0;
+// }
+
+.drawer-container {
+  background: linear-gradient(140deg, #2b0c72, #5c3fa0);
+  flex-direction: column;
+  justify-content: center;
+  padding: 20;
+}
+
+// .btn{
+
+//   border-width: 1;
+//   width: 100%;
+//   padding: 5 10;
+//   border-radius: 30%;
+//   margin: 5 0;
+// }
