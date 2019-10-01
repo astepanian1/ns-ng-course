@@ -12,7 +12,7 @@ refer to http://docs.nativescript.org/ui/theme...
 @import "~nativescript-theme-core/scss/light";
 @import "app.variables";
 @import "./theme/colors";
-@import '~nativescript-theme-core/scss/index';
+@import "~nativescript-theme-core/scss/index";
 
 ActionBar {
   background: $primary;
@@ -32,7 +32,7 @@ ActionBar {
     .label {
       color: $primary;
       font-weight: bold;
-      font-family: 'Oswald', 'Oswald-Regular', 'Oswald-Bold';
+      font-family: "Oswald", "Oswald-Regular", "Oswald-Bold";
     }
 
     .input {
@@ -42,6 +42,12 @@ ActionBar {
       color: black;
     }
   }
+}
+
+.h1{
+  font-weight:bold;
+  color: $primary;
+
 }
 
 // .form-control {
@@ -59,6 +65,13 @@ ActionBar {
   padding: 20;
 }
 
+.btn-flat {
+  background: transparent;
+  border-color: transparent;
+  border-width: 1;
+  color: $primary;
+  z-index: 0;
+}
 // .btn{
 
 //   border-width: 1;
