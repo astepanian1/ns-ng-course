@@ -5,7 +5,7 @@
          <!-- ActionItem has limitation on Android of ability to position only on a right
          hence we are using Navigationbutton as workaround for Android. -->
         <ActionItem (tap)="onToggleMenu()" *ngIf="!android && hasMenu" ios.position="left">
-                <Label text="MENU"></Label>
+                <Label text="&#xf0c9;" class="fa m-5"></Label>
         </ActionItem>
 
         <ng-content></ng-content>

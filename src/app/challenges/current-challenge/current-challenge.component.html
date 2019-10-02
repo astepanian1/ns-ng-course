@@ -1,9 +1,11 @@
 <!-- All Html between ns-action-bar will appear between ActionBar component's <ng-content></ng-content> tags -->
 <ns-action-bar title="Current Challenge" [showBackButton]="false">
-    <ActionItem nsRouterLink="/challenges/replace" ios.position="right" android.position="actionBar"
-        pageTransition="slideRight"><Label text="Replace"></Label></ActionItem>
-    <ActionItem nsRouterLink="/challenges/edit" ios.position="right" android.position="actionBar"
-        pageTransition="slideRight"><Label text="Edit"></Label></ActionItem>
+    <ActionItem nsRouterLink="/challenges/replace" ios.position="right" android.position="actionBar" pageTransition="slideRight">
+        <Label text="&#xf0fe;" ios:class="fa" android:class="fa p-5" style="font-size:24"></Label>
+    </ActionItem>
+    <ActionItem nsRouterLink="/challenges/edit" ios.position="right" android.position="actionBar" pageTransition="slideRight">
+        <Label text="&#xf044;"  ios:class="fa" android:class="fa p-5" style="font-size:24"></Label>
+    </ActionItem>
 </ns-action-bar>
 <ScrollView>
     <FlexboxLayout class="page">
@@ -14,7 +16,8 @@
         <GridLayout rows="auto,*,*,*,*,*,*" columns="*,*,*,*,*,*,*">
             <Label class="week-day-label" width="100%" class="text-center"
                 *ngFor="let weekDay of weekDays;let i = index" [text]="weekDay" row="0" [col]="i"></Label>
-            <FlexboxLayout (tap)="onChangeStatus()" *ngFor="let day of days;let i = index" [row]="getRow(i,day)" [col]="day.dayInWeek"class="day completed">
+            <FlexboxLayout (tap)="onChangeStatus()" *ngFor="let day of days;let i = index" [row]="getRow(i,day)"
+                [col]="day.dayInWeek" class="day completed">
                 <Label [text]="day.dayInMonth"></Label>
             </FlexboxLayout>
 
