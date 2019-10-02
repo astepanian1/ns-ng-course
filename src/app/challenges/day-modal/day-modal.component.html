@@ -1,5 +1,3 @@
-<Flexboxlayout>
-    <Label [text]="loadedDate | date"></Label>
-    <Button (tap)="onHandleInput('complete')" class="btn" text="Completed"></Button>
-    <Button (tap)="onHandleInput('fail')" class="btn" text="Failed"></Button>
-</Flexboxlayout>
+<FlexboxLayout>
+<ns-challenges-actions (actionSelect)="onHandleInput($event)"></ns-challenges-actions>
+</FlexboxLayout>

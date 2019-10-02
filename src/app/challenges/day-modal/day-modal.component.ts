@@ -4,7 +4,7 @@ import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
 @Component({
   selector: 'ns-day-modal',
   templateUrl: './day-modal.component.html',
-  styleUrls: ['./day-modal.component.css']
+  styleUrls: ['./day-modal.component.scss']
 })
 export class DayModalComponent implements OnInit {
 loadedDate: Date;
@@ -15,7 +15,7 @@ loadedDate: Date;
     this.loadedDate = <Date>this.modalParams.context.date;
   }
 
-  onHandleInput(action:string){
+  onHandleInput(action:'complete'|'fail'|'cancel'){
     this.modalParams.closeCallback(action);
   }
 }

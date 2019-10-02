@@ -10,6 +10,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular/side-drawer-directives';
 import { DayModalComponent } from './challenges/day-modal/day-modal.component';
 import { SharedModule } from "./shared/shared.module";
+import { ChallengeActionsModule } from "./challenges/challenges-actions/challenge-actions.module";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SharedModule } from "./shared/shared.module";
         NativeScriptModule,
         NativeScriptFormsModule,
         AppRoutingModule,
-        SharedModule
+        SharedModule,
+        ChallengeActionsModule
     ],
     declarations: [
         AppComponent,
