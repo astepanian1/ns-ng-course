@@ -3,7 +3,8 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 @Component({
   selector: 'ns-challenges-actions',
   templateUrl: './challenges-actions.component.html',
-  styleUrls: ['./challenges-actions.component.scss']
+  styleUrls: ['./challenges-actions.component.scss'],
+  moduleId: module.id 
 })
 export class ChallengesActionsComponent implements OnInit {
 @Output()

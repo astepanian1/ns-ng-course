@@ -3,13 +3,15 @@ import { ChallengeEditComponent } from "./challenge-edit/challenge-edit.componen
 import { SharedModule } from "../shared/shared.module";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 @NgModule({
     declarations:[ChallengeEditComponent],
     imports: [
-      
+
         NativeScriptCommonModule,
         NativeScriptRouterModule,
+        NativeScriptFormsModule,
         //HINT: Must Register twice because in above below scenario it registers routes but doesnt unlock routing features
         //when you only call .forChild or forRoot
         NativeScriptRouterModule.forChild([{ path:'', component:ChallengeEditComponent}]),

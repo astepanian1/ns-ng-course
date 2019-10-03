@@ -34,12 +34,26 @@ ActionBar {
       font-weight: bold;
       font-family: 'Oswald', 'Oswald-Regular', 'Oswald-Bold';
     }
+    
+    label.invalid{
+      color:red;
+    }
+    
 
     .input {
       border-bottom-width: 2;
       border-bottom-color: $primary;
       width: 100%;
-      color: black;
+      //color: black;
+    }
+
+    .ng-pristine.ng-invalid.ng-touched{
+      border-bottom-color:red;
+      color:red;
+    }
+    .ng-dirty.ng-invalid.ng-touched{
+      border-bottom-color:red;
+      color:red;
     }
   }
 }
@@ -82,6 +96,10 @@ ActionBar {
   color: $primary;
   z-index: -1;
 }
+
+
+
+
 // .btn{
 
 //   border-width: 1;

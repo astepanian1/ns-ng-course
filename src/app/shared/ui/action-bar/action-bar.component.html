@@ -1,7 +1,7 @@
 <ActionBar [title]="title" (loaded)="onLoadedActionBar()"  >
         <NavigationButton text="Back" android.systemIcon="ic_menu_back" *ngIf="canGoBack" (tap)="onGoBack()"></NavigationButton>
          <!-- Navigation Bar should be used for Android if requirement is to position to the left corner -->
-        <NavigationButton (tap)="onToggleMenu()" *ngIf="android && hasMenu" icon="res://menu"></NavigationButton>
+        <NavigationButton (tap)="onToggleMenu()" *ngIf="android && hasMenu" icon="res://menu_black"></NavigationButton>
          <!-- ActionItem has limitation on Android of ability to position only on a right
          hence we are using Navigationbutton as workaround for Android. -->
         <ActionItem (tap)="onToggleMenu()" *ngIf="!android && hasMenu" ios.position="left">
