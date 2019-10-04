@@ -14,6 +14,7 @@ export class AuthComponent implements OnInit {
   emailControlIsValid = true;
   passwordControlIsValid = true;
   isLogin = true;
+
   @ViewChild('emailEl', { static: false })
   emailEl: ElementRef<TextField>;
   @ViewChild('passwordEl', { static: false })
@@ -54,14 +55,19 @@ export class AuthComponent implements OnInit {
 
     const email = this.form.get('email').value;
     const password = this.form.get('password').value;
+
     this.form.reset();
+
     this.emailControlIsValid = true;
     this.passwordControlIsValid = true;
+
     if (this.isLogin) {
       console.log('Logging in...');
     } else {
       console.log('Signing up ...');
     }
+
+    this.router.navigate(['/challenges']);
   }
 
   onDone() {
