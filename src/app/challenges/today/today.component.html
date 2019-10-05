@@ -1,4 +1,10 @@
-<ns-action-bar title="Today's Challenge" [showBackButton]="false"></ns-action-bar>
+<ns-action-bar
+  title="Today's Challenge"
+  [showBackButton]="false"
+></ns-action-bar>
 <GridLayout>
-<ns-challenges-actions [cancelText]= "'Reset'" (actionSelect)="onActionSelected($event)"></ns-challenges-actions>
+  <ns-challenges-actions
+    [cancelText]="'Reset'"
+    (actionSelect)="onActionSelected($event)"
+  ></ns-challenges-actions>
 </GridLayout>
