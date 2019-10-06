@@ -1,19 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ChallengeService } from '../challenge.service';
+import { Day } from '../day.model';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'ns-today',
-  templateUrl: './today.component.html',
-  styleUrls: ['./today.component.scss'],
-  moduleId: module.id 
+    selector: 'ns-today',
+    templateUrl: './today.component.html',
+    styleUrls: ['./today.component.scss'],
+    moduleId: module.id
 })
-export class TodayComponent implements OnInit {
+export class TodayComponent implements OnInit, OnDestroy {
+    currentDay: Day;
+    currentChallengeSub: Subscription;
 
-  constructor() { }
+    constructor(private challengeService: ChallengeService) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.currentChallengeSub = this.challengeService.currentChallenge.subscribe((challenge) => {
+            if (challenge) {
+                this.currentDay = challenge.currentDay;
+            }
+        });
+    }
 
-  onActionSelected(action: 'complete' | 'fail' | 'cancel') {
-    console.log(action);
-  }
+    onActionSelected(action: 'complete' | 'fail' | 'cancel') {
+        console.log(action);
+    }
+
+    ngOnDestroy() {
+        if (this.currentChallengeSub)
+            this.currentChallengeSub.unsubscribe();
+    }
 }

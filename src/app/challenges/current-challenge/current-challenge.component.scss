@@ -26,18 +26,17 @@
   color: $primary;
 }
 
-
-.completed{
-  background:$success;
-  color:$white;
+.completed {
+  background: $success;
+  color: $white;
 }
 
-.failed{
-  background:$fail;
-  color:$white;
+.failed {
+  background: $fail;
+  color: $white;
 }
 
-.not-settable{
+.not-settable {
   background: #ccc;
-  color:#535353;
+  color: #535353;
 }

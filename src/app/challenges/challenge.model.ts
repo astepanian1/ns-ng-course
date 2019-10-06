@@ -2,14 +2,15 @@ import { Day, DayStatus } from "./day.model";
 import { dayProperty } from "tns-core-modules/ui/date-picker/date-picker";
 
 export class Challenge {
+
     constructor(
         public title: string,
         public description: string,
         public year: number,
-        public month: number,
+        public month: number, 
         private _days: Day[] = []
     ) {
-        if (_days => 0) {
+        if (_days.length > 0) {
             return;
         }
         // this.currentYear = new Date().getFullYear();
@@ -29,7 +30,7 @@ export class Challenge {
         }
     }
 
-    get getCurrentDay() {
+    get currentDay() {
         return this._days.find(d => d.dayInMonth === new Date().getDate());
     }
 

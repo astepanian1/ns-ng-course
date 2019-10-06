@@ -15,18 +15,17 @@ declare var android: any;
     moduleId: module.id
 })
 export class CurrentChallengeComponent implements OnInit, OnDestroy {
+
     weekDays = ["S", "M", "T", "W", "T", "F", "S"];
     currentChallenge: Challenge;
     private currentChallengeSub: Subscription;
-    private currentMonth: number;
-    private currentYear: number;
 
     constructor(
         private modalDialog: ModalDialogService,
         private vcRef: ViewContainerRef,
         private uiService: UIService,
         private challengeService: ChallengeService
-    ) {}
+    ) { }
 
     //Edit value is passed to parameter :mode
     onChangeStatus() {
@@ -52,8 +51,8 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy {
         const startRow = 1;
         const weekRow = Math.floor(index / 7);
         const firstWeekDayOfMonth = new Date(
-            this.currentYear,
-            this.currentMonth,
+            new Date().getFullYear(),
+            new Date().getMonth(),
             1
         ).getDay();
         const irregularRow = day.dayInWeek < firstWeekDayOfMonth ? 1 : 0;
@@ -66,4 +65,6 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy {
             this.currentChallengeSub.unsubscribe();
         }
     }
+
+
 }

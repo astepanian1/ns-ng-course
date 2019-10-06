@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PageRoute, RouterExtensions } from 'nativescript-angular/router';
+import { ChallengeService } from '../challenge.service';
 
 @Component({
   selector: 'ns-challenge-edit',
@@ -12,7 +13,7 @@ export class ChallengeEditComponent implements OnInit {
   isCreating = true;
 
 
-  constructor(private activatedRoute: ActivatedRoute, private pageRoute: PageRoute,private router:RouterExtensions) {
+  constructor(private activatedRoute: ActivatedRoute, private pageRoute: PageRoute,private router:RouterExtensions,private challengeService:ChallengeService) {
 
   }
   //In NativeScript Mobile apps pages are cached
@@ -39,7 +40,7 @@ export class ChallengeEditComponent implements OnInit {
 
     onSubmit(title:string,description: string){
       //...
-      console.log(title,description);
+    this.challengeService.createNewChallenge(title,description);
       this.router.backToPreviousPage();
     }
 }
