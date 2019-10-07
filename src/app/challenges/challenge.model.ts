@@ -7,7 +7,7 @@ export class Challenge {
         public title: string,
         public description: string,
         public year: number,
-        public month: number, 
+        public month: number,
         private _days: Day[] = []
     ) {
         if (_days.length > 0) {

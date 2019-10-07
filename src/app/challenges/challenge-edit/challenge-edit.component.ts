@@ -7,13 +7,13 @@ import { ChallengeService } from '../challenge.service';
   selector: 'ns-challenge-edit',
   templateUrl: './challenge-edit.component.html',
   styleUrls: ['./challenge-edit.component.scss'],
-  moduleId: module.id 
+  moduleId: module.id
 })
 export class ChallengeEditComponent implements OnInit {
   isCreating = true;
 
 
-  constructor(private activatedRoute: ActivatedRoute, private pageRoute: PageRoute,private router:RouterExtensions,private challengeService:ChallengeService) {
+  constructor(private activatedRoute: ActivatedRoute, private pageRoute: PageRoute, private router: RouterExtensions, private challengeService: ChallengeService) {
 
   }
   //In NativeScript Mobile apps pages are cached
@@ -38,11 +38,11 @@ export class ChallengeEditComponent implements OnInit {
   }
 
 
-    onSubmit(title:string,description: string){
-      //...
-    this.challengeService.createNewChallenge(title,description);
-      this.router.backToPreviousPage();
-    }
+  onSubmit(title: string, description: string) {
+    //...
+    this.challengeService.createNewChallenge(title, description);
+    this.router.backToPreviousPage();
+  }
 }
 
 

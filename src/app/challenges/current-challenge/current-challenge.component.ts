@@ -5,6 +5,7 @@ import { UIService } from "~/app/shared/ui/ui.service";
 import { ChallengeService } from "../challenge.service";
 import { Challenge } from "../challenge.model";
 import { Subscription } from "rxjs";
+import { Day, DayStatus } from "../day.model";
 
 declare var android: any;
 
@@ -25,20 +26,36 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy {
         private vcRef: ViewContainerRef,
         private uiService: UIService,
         private challengeService: ChallengeService
-    ) { }
+    ) 
+    {
+
+    }
 
     //Edit value is passed to parameter :mode
-    onChangeStatus() {
+    onChangeStatus(day: Day) {
+
+
+        if (!this.getIsSettible(day.dayInMonth)) {
+            return false;
+        }
+
         this.modalDialog
             .showModal(DayModalComponent, {
                 fullscreen: true,
                 viewContainerRef: this.uiService.getRootVCRef(),
-                context: { date: new Date() }
+                context: { date: day.date,status:day.status }
             })
-            .then((action: string) => {
-                console.log(action);
+            .then((status: DayStatus) => {
+
+                if(status   === DayStatus.Open){
+                    return;
+                }
+
+              this.challengeService.updateDayStatus(day.dayInMonth,status);
             });
     }
+
+
 
     ngOnInit() {
         this.currentChallengeSub = this.challengeService.currentChallenge.subscribe(
@@ -66,5 +83,9 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy {
         }
     }
 
+    getIsSettible(dayInMonth: number) {
 
+        return dayInMonth <= new Date().getDate();
+
+    }
 }
