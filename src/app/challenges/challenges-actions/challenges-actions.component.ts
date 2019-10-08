@@ -27,6 +27,11 @@ export class ChallengesActionsComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.chosen) {
       this.action = changes.chosen.currentValue;
+
+      if (changes.chosen.currentValue == null) {
+        this.done = false;
+      }
+
     }
   }
 
@@ -47,7 +52,7 @@ export class ChallengesActionsComponent implements OnInit, OnChanges {
     else if (action === 'cancel') {
       this.action = null;
       this.done = false;
-      status = DayStatus.Open;
+      //status = DayStatus.Open;
     }
 
 

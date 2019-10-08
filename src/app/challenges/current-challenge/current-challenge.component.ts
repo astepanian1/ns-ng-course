@@ -26,8 +26,7 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy {
         private vcRef: ViewContainerRef,
         private uiService: UIService,
         private challengeService: ChallengeService
-    ) 
-    {
+    ) {
 
     }
 
@@ -43,15 +42,15 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy {
             .showModal(DayModalComponent, {
                 fullscreen: true,
                 viewContainerRef: this.uiService.getRootVCRef(),
-                context: { date: day.date,status:day.status }
+                context: { date: day.date, status: day.status }
             })
             .then((status: DayStatus) => {
 
-                if(status   === DayStatus.Open){
+                if (status === DayStatus.Open) {
                     return;
                 }
 
-              this.challengeService.updateDayStatus(day.dayInMonth,status);
+                this.challengeService.updateDayStatus(day.dayInMonth, status);
             });
     }
 
@@ -65,6 +64,7 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy {
         );
     }
     getRow(index: number, day: { dayInMonth: number; dayInWeek: number }) {
+
         const startRow = 1;
         const weekRow = Math.floor(index / 7);
         const firstWeekDayOfMonth = new Date(

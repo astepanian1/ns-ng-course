@@ -16,7 +16,14 @@ export class DayModalComponent implements OnInit {
 
   ngOnInit() {
     this.loadedDate = <Date>this.modalParams.context.date;
-    this.loadedStatus = (<DayStatus>this.modalParams.context.status === DayStatus.Completed) ? 'complete' : 'fail';
+    if(<DayStatus>this.modalParams.context.status === DayStatus.Completed){
+      this.loadedStatus = 'complete';
+    } else if(<DayStatus>this.modalParams.context.status === DayStatus.Failed){
+      this.loadedStatus = 'fail';
+    }
+    else{
+      this.loadedStatus = null;
+    }
   }
 
   onHandleInput(action: DayStatus) {

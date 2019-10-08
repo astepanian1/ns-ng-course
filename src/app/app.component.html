@@ -4,14 +4,13 @@
 <!-- Regardless of Layout used in component app.component is required to include layout tag  to work properly: -->
 <StackLayout>
   <RadSideDrawer>
-    <FlexboxLayout tkDrawerContent class="drawer-container">
-      <Button
-        (tap)="onLogout()"
+    <FlexboxLayout tkDrawerContent
+      class="drawer-container">
+      <Button (tap)="onLogout()"
         nsRouterLink="/"
         [clearHistory]="true"
         text="Logout"
-        class="btn btn-primary btn-rounded-lg"
-      ></Button>
+        class="btn btn-primary btn-rounded-lg"></Button>
     </FlexboxLayout>
     <StackLayout tkMainContent>
       <page-router-outlet></page-router-outlet>

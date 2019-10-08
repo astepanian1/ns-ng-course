@@ -1,62 +1,63 @@
 <!-- All Html between ns-action-bar will appear between ActionBar component's <ng-content></ng-content> tags -->
 <ns-action-bar title="Current Challenge"
-	[showBackButton]="false">
-	<ActionItem nsRouterLink="/challenges/replace"
-		ios.position="right"
-		android.position="actionBar"
-		pageTransition="slideRight">
-		<Label text="&#xf0fe;"
-			ios:class="fa"
-			android:class="fa p-5"
-			style="font-size:24">
-		</Label>
-	</ActionItem>
-	<ActionItem nsRouterLink="/challenges/edit"
-		ios.position="right"
-		android.position="actionBar"
-		pageTransition="slideRight">
-		<Label text="&#xf044;"
-			ios:class="fa"
-			android:class="fa p-5"
-			style="font-size:24">
-		</Label>
-	</ActionItem>
+    [showBackButton]="false">
+    <ActionItem nsRouterLink="/challenges/replace"
+        ios.position="right"
+        android.position="actionBar"
+        pageTransition="slideRight">
+        <Label text="&#xf0fe;"
+            ios:class="fa"
+            android:class="fa p-5"
+            style="font-size:24">
+        </Label>
+    </ActionItem>
+    <ActionItem nsRouterLink="/challenges/edit"
+        ios.position="right"
+        android.position="actionBar"
+        *ngIf="currentChallenge"
+        pageTransition="slideLeft">
+        <Label text="&#xf044;"
+            ios:class="fa"
+            android:class="fa p-5"
+            style="font-size:24">
+        </Label>
+    </ActionItem>
 </ns-action-bar>
 <ScrollView>
-	<FlexboxLayout class="page">
-		<StackLayout *ngIf="!currentChallenge">
-			<Label text="No Challenge found!"></Label>
-			<Button class="btn btn-primary"
-				text="Create One!"
-				nsRouterLink="/challenges/replace"
-				PageTransition="slideLeft">
-			</Button>
-		</StackLayout>
-		<StackLayout *ngIf="currentChallenge">
-			<Label class="h1 text-center"
-				[text]="currentChallenge.title">
-			</Label>
-			<Label class="body text-center"
-				[text]="currentChallenge.description"></Label>
-		</StackLayout>
-		<GridLayout *ngIf="currentChallenge"
-			rows="auto,*,*,*,*,*,*"
-			columns="*,*,*,*,*,*,*">
-			<Label class="week-day-label"
-				width="100%"
-				class="text-center"
-				*ngFor="let weekDay of weekDays; let i = index"
-				[text]="weekDay"
-				row="0"
-				[col]="i"></Label>
-			<FlexboxLayout *ngFor="let day of currentChallenge.days; let i = index"
-				(tap)="onChangeStatus(day)"
-				[row]="getRow(i, day)"
-				[col]="day.dayInWeek"
-				class="day"
-				[ngClass]="{' not-settable': !getIsSettible(day.dayInMonth),completed:day.status === 1,failed: day.status === 2}">
-				<Label [text]="day.dayInMonth"></Label>
-			</FlexboxLayout>
-		</GridLayout>
-	</FlexboxLayout>
+    <FlexboxLayout class="page">
+        <StackLayout *ngIf="!currentChallenge">
+            <Label text="No Challenge found!"></Label>
+            <Button class="btn btn-primary"
+                text="Create One!"
+                nsRouterLink="/challenges/replace"
+                PageTransition="slideLeft">
+            </Button>
+        </StackLayout>
+        <StackLayout *ngIf="currentChallenge">
+            <Label class="h1 text-center"
+                [text]="currentChallenge.title">
+            </Label>
+            <Label class="body text-center"
+                [text]="currentChallenge.description"></Label>
+        </StackLayout>
+        <GridLayout *ngIf="currentChallenge"
+            rows="auto,*,*,*,*,*,*"
+            columns="*,*,*,*,*,*,*">
+            <Label class="week-day-label"
+                width="100%"
+                class="text-center"
+                *ngFor="let weekDay of weekDays; let i = index"
+                [text]="weekDay"
+                row="0"
+                [col]="i"></Label>
+            <FlexboxLayout *ngFor="let day of currentChallenge.days; let i = index"
+                (tap)="onChangeStatus(day)"
+                [row]="getRow(i, day)"
+                [col]="day.dayInWeek"
+                class="day"
+                [ngClass]="{' not-settable': !getIsSettible(day.dayInMonth),completed:day.status === 1,failed: day.status === 2}">
+                <Label [text]="day.dayInMonth"></Label>
+            </FlexboxLayout>
+        </GridLayout>
+    </FlexboxLayout>
 </ScrollView>

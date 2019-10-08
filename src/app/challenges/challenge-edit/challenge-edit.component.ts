@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PageRoute, RouterExtensions } from 'nativescript-angular/router';
 import { ChallengeService } from '../challenge.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'ns-challenge-edit',
@@ -11,9 +12,15 @@ import { ChallengeService } from '../challenge.service';
 })
 export class ChallengeEditComponent implements OnInit {
   isCreating = true;
+  title: string = '';
+  description: string = '';
 
+  constructor(
 
-  constructor(private activatedRoute: ActivatedRoute, private pageRoute: PageRoute, private router: RouterExtensions, private challengeService: ChallengeService) {
+    private activatedRoute: ActivatedRoute,
+    private pageRoute: PageRoute,
+    private router: RouterExtensions,
+    private challengeService: ChallengeService) {
 
   }
   //In NativeScript Mobile apps pages are cached
@@ -29,9 +36,16 @@ export class ChallengeEditComponent implements OnInit {
       activatedRoute.paramMap.subscribe(paramMap => {
         if (!paramMap.has('mode')) {
           this.isCreating = true;
-        } else {
+        }
+        else {
 
           this.isCreating = paramMap.get('mode') !== 'edit';
+        }
+        if (!this.isCreating) {
+          this.challengeService.currentChallenge.pipe(take(1)).subscribe((challenge) => {
+            this.title = challenge.title;
+            this.description = challenge.description;
+          });
         }
       })
     })
@@ -40,7 +54,13 @@ export class ChallengeEditComponent implements OnInit {
 
   onSubmit(title: string, description: string) {
     //...
-    this.challengeService.createNewChallenge(title, description);
+
+    if (this.isCreating) {
+      this.challengeService.createNewChallenge(title, description);
+    }
+    else{
+      this.challengeService.updateChallenge(title, description);
+    }
     this.router.backToPreviousPage();
   }
 }

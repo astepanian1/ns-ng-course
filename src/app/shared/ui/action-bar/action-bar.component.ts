@@ -10,7 +10,7 @@ declare var android: any;
   selector: 'ns-action-bar',
   templateUrl: './action-bar.component.html',
   styleUrls: ['./action-bar.component.css'],
-  moduleId: module.id 
+  moduleId: module.id
 })
 export class ActionBarComponent implements OnInit {
   @Input()
@@ -49,13 +49,13 @@ export class ActionBarComponent implements OnInit {
       //Currently used both for Back button and Menu Bars hense conditional statement.
       const navigationIcon = androidNativeToolBar.getNavigationIcon();
       let color = "";
-      
+
       //If its a Menu
       if (this.hasMenu) {
         color = '#ffffff';
       }
       //If its a BackButton
-      else if(this.canGoBack){
+      else if (this.canGoBack) {
         color = "#171717";
       }
 
@@ -65,5 +65,7 @@ export class ActionBarComponent implements OnInit {
 
     }
   }
+
+
 
 }

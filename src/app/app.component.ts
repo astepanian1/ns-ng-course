@@ -8,26 +8,26 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
     selector: "ns-app",
     templateUrl: "./app.component.html"
 })
-export class AppComponent implements OnInit,AfterViewInit, OnDestroy {
-    @ViewChild(RadSideDrawerComponent,{static:false})
-    drawerComponent:RadSideDrawerComponent;
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
+    @ViewChild(RadSideDrawerComponent, { static: false })
+    drawerComponent: RadSideDrawerComponent;
     activeChallenge: string = '';
-    
+
     private drawerSub: Subscription;
     private drawer: RadSideDrawer;
-    
 
-    constructor(private uiService: UIService,private changeDetectionRef: ChangeDetectorRef,private vcRef:ViewContainerRef ) {
+
+    constructor(private uiService: UIService, private changeDetectionRef: ChangeDetectorRef, private vcRef: ViewContainerRef) {
 
 
     }
 
     ngOnInit() {
-     
+
         this.drawerSub = this.uiService.drawerState.subscribe(() => {
-             if(this.drawer){
-                 this.drawer.toggleDrawerState();
-             }
+            if (this.drawer) {
+                this.drawer.toggleDrawerState();
+            }
         });
 
         this.uiService.setRootVCRef(this.vcRef);
@@ -37,14 +37,14 @@ export class AppComponent implements OnInit,AfterViewInit, OnDestroy {
     onChallengeInput(challengeDescription: string) {
         this.activeChallenge = challengeDescription;
     }
-    onLogout(){
+    onLogout() {
         this.uiService.toggleDrawer();
     }
 
-    ngAfterViewInit(){
+    ngAfterViewInit() {
 
-        this.drawer =  this.drawerComponent.sideDrawer;
-       
+        this.drawer = this.drawerComponent.sideDrawer;
+
         this.changeDetectionRef.detectChanges();
     }
 
