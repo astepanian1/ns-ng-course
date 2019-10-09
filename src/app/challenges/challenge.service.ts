@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { Challenge } from "./challenge.model";
-import { DayStatus } from "./day.model";
-import { take } from 'rxjs/operators';
+import { DayStatus, Day } from "./day.model";
+import { take, tap } from 'rxjs/operators';
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
     providedIn: "root"
@@ -14,7 +15,27 @@ export class ChallengeService {
         return this._currentChallenge.asObservable();
     }
 
-    constructor() { }
+    constructor(private http: HttpClient) { }
+
+
+    fetchCurrentChallenge() {
+        return this.http.get<{ title: string, description: string, month: number, year: number, _days: Day[] }>('https://ns-ng-course123.firebaseio.com/challenge.json').pipe(
+
+            tap(resData => {
+                if (resData) {
+                    const loadedChallenge = new Challenge(
+                        resData.title,
+                        resData.description,
+                        resData.year,
+                        resData.month,
+                        resData._days
+                    );
+                    this._currentChallenge.next(loadedChallenge);
+                }
+            })
+        );
+
+    }
 
     createNewChallenge(title: string, description: string) {
         const newChallenge = new Challenge(
@@ -23,6 +44,9 @@ export class ChallengeService {
             new Date().getFullYear(),
             new Date().getMonth()
         );
+
+        //Save it to server
+        this.saveToServer(newChallenge);
         this._currentChallenge.next(newChallenge);
     }
 
@@ -31,6 +55,7 @@ export class ChallengeService {
 
             const updateChallenge = new Challenge(title, description, challenge.year, challenge.month, challenge.days);
             //Send To Server
+            this.saveToServer(updateChallenge);
             this._currentChallenge.next(updateChallenge);
         })
     }
@@ -49,6 +74,12 @@ export class ChallengeService {
             this._currentChallenge.next(challenge);
             console.log(challenge.days[dayIndex]);
             //Save this to a server
+        });
+    }
+
+    private saveToServer(challenge: Challenge) {
+        this.http.put('https://ns-ng-course123.firebaseio.com/challenge.json', challenge).subscribe((result) => {
+            console.log(result);
         });
     }
 }

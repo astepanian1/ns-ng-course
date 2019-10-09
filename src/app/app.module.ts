@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from "@angular/forms";
         AppComponent
     ],
     imports: [
+        NativeScriptHttpClientModule,
         NativeScriptUISideDrawerModule,
         NativeScriptModule,
         NativeScriptFormsModule,

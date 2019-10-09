@@ -13,6 +13,6 @@
   *ngIf="currentDay">
   <Label class="h1"
     [text]="currentDay.date | date"></Label>
-  <ns-challenges-actions [cancelText]="'Reset'" [chosen]="getActionName()"
+  <ns-challenges-actions [startDone]="getActionName() === 'complete' || getActionName() === 'fail' " [cancelText]="'Reset'" [chosen]="getActionName()"
     (actionSelect)="onActionSelected($event)"></ns-challenges-actions>
 </FlexboxLayout>
