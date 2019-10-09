@@ -43,9 +43,13 @@
 
     <Button class="btn btn-flat"
         [text]="isLogin ? 'Signup':'Login'"
-        (tap)="onSwitch()"></Button>
-    <Button [text]="isLogin ? 'Login':'Signup'"
+        (tap)="onSwitch()">
+    </Button>
+    <Button *ngIf="!isLoading"
+     [text]="isLogin ? 'Login':'Signup'"
         class="btn btn-primary btn-rounded-lg"
         [isEnabled]="form.valid"
-        (tap)="onSubmit()"></Button>
+        (tap)="onSubmit()">
+    </Button>
+    <ActivityIndicator [busy]="isLoading"></ActivityIndicator>
 </StackLayout>
