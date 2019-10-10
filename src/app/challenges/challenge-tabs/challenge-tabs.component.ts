@@ -34,12 +34,11 @@ export class ChallengeTabsComponent implements OnInit {
       (err) => {
         console.log(err);
         this.isLoading = false;
+        this.loadTabRoutes();
       });
 
     //Hides Duplicate ActionBar which not necessary when using TABS
     this.page.actionBarHidden = true;
-
-
 
   }
 

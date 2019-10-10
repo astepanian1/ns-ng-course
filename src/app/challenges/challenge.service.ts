@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, of } from "rxjs";
 import { Challenge } from "./challenge.model";
 import { DayStatus, Day } from "./day.model";
-import { take, tap } from 'rxjs/operators';
+import { take, tap, switchMap } from 'rxjs/operators';
 import { HttpClient } from "@angular/common/http";
+import { AuthService } from "../auth/auth.service";
 
 @Injectable({
     providedIn: "root"
@@ -15,12 +16,20 @@ export class ChallengeService {
         return this._currentChallenge.asObservable();
     }
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private authService: AuthService) { }
 
 
     fetchCurrentChallenge() {
-        return this.http.get<{ title: string, description: string, month: number, year: number, _days: Day[] }>('https://ns-ng-course123.firebaseio.com/challenge.json').pipe(
+        return this.authService.user.pipe(
+            take(1),
+            switchMap((currentUser) => {
 
+                if (!currentUser || !currentUser.isAuth) {
+                    return of(null);
+                }
+
+                return this.http.get<{ title: string, description: string, month: number, year: number, _days: Day[] }>(`https://ns-ng-course123.firebaseio.com/challenge.json?auth=${currentUser.token}`)
+            }),
             tap(resData => {
                 if (resData) {
                     const loadedChallenge = new Challenge(
@@ -34,6 +43,7 @@ export class ChallengeService {
                 }
             })
         );
+
 
     }
 
@@ -78,8 +88,22 @@ export class ChallengeService {
     }
 
     private saveToServer(challenge: Challenge) {
-        this.http.put('https://ns-ng-course123.firebaseio.com/challenge.json', challenge).subscribe((result) => {
+
+        this.authService.user.pipe(
+            take(1),
+            switchMap((currentUser) => {
+
+            if (!currentUser || !currentUser.isAuth) {
+                return of(null);
+            }
+
+            return this.http.put(`https://ns-ng-course123.firebaseio.com/challenge.json?auth=${currentUser.token}`, challenge)
+        })
+        ).subscribe((result) => {
             console.log(result);
         });
+
+
+
     }
 }
