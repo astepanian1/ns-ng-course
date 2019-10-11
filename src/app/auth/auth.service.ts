@@ -82,7 +82,7 @@ export class AuthService {
 
 
   autoLogout(expiryDuration: number) {
-    this.tokenExpirationTimer = setTimeout(()=> this.logout(), expiryDuration);
+    this.tokenExpirationTimer = setTimeout(() => this.logout(), expiryDuration);
   }
 
   autoLogin() {
@@ -133,7 +133,6 @@ export class AuthService {
     if (this.tokenExpirationTimer) {
       clearTimeout(this.tokenExpirationTimer);
     }
-
 
     this.routher.navigate(['/auth'], { clearHistory: true })
   }

@@ -33,9 +33,12 @@
                 PageTransition="slideLeft">
             </Button>
         </StackLayout>
-        <StackLayout *ngIf="currentChallenge">
+        <StackLayout *ngIf="currentChallenge"
+            marginBottom="10"
+            marginTop="10">
             <Label class="h1 text-center"
-                [text]="currentChallenge.title">
+                [text]="currentChallenge.title"
+                width="100%">
             </Label>
             <Label class="body text-center"
                 [text]="currentChallenge.description"></Label>

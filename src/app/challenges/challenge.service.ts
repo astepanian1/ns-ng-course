@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { BehaviorSubject, of } from "rxjs";
+import { Injectable, OnDestroy } from "@angular/core";
+import { BehaviorSubject, of, Subscription } from "rxjs";
 import { Challenge } from "./challenge.model";
 import { DayStatus, Day } from "./day.model";
 import { take, tap, switchMap } from 'rxjs/operators';
@@ -9,14 +9,23 @@ import { AuthService } from "../auth/auth.service";
 @Injectable({
     providedIn: "root"
 })
-export class ChallengeService {
+export class ChallengeService implements OnDestroy {
     private _currentChallenge = new BehaviorSubject<Challenge>(null);
+    private userSub: Subscription;
 
     get currentChallenge() {
         return this._currentChallenge.asObservable();
     }
 
-    constructor(private http: HttpClient, private authService: AuthService) { }
+    constructor(private http: HttpClient, private authService: AuthService) {
+        this.userSub = this.authService.user.subscribe((user) => {
+
+            if (!user) {
+                this._currentChallenge.next(null);
+            }
+
+        });
+    }
 
 
     fetchCurrentChallenge() {
@@ -28,7 +37,7 @@ export class ChallengeService {
                     return of(null);
                 }
 
-                return this.http.get<{ title: string, description: string, month: number, year: number, _days: Day[] }>(`https://ns-ng-course123.firebaseio.com/challenge.json?auth=${currentUser.token}`)
+                return this.http.get<{ title: string, description: string, month: number, year: number, _days: Day[] }>(`https://ns-ng-course123.firebaseio.com/challenge/${currentUser.id}.json?auth=${currentUser.token}`)
             }),
             tap(resData => {
                 if (resData) {
@@ -82,8 +91,7 @@ export class ChallengeService {
 
             challenge.days[dayIndex].status = status;
             this._currentChallenge.next(challenge);
-            console.log(challenge.days[dayIndex]);
-            //Save this to a server
+            this.saveToServer(challenge);
         });
     }
 
@@ -93,17 +101,23 @@ export class ChallengeService {
             take(1),
             switchMap((currentUser) => {
 
-            if (!currentUser || !currentUser.isAuth) {
-                return of(null);
-            }
+                if (!currentUser || !currentUser.isAuth) {
+                    return of(null);
+                }
 
-            return this.http.put(`https://ns-ng-course123.firebaseio.com/challenge.json?auth=${currentUser.token}`, challenge)
-        })
+                return this.http.put(`https://ns-ng-course123.firebaseio.com/challenge/${currentUser.id}.json?auth=${currentUser.token}`, challenge)
+            })
         ).subscribe((result) => {
             console.log(result);
         });
 
 
 
+    }
+
+    ngOnDestroy() {
+        if (this.userSub) {
+            this.userSub.unsubscribe
+        }
     }
 }
